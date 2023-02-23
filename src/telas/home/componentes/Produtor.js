@@ -1,32 +1,29 @@
-import React, { useReducer, useMemo } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Estrelas from "../../../components/Estrelas";
+import React, { useMemo } from 'react';
+import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
+
+import Estrelas from '../../../components/Estrelas';
 
 const distanciaEmMetros = (distancia) => {
-    return `${distancia}m`
+    return `${distancia}m`;
 }
 
-export default function Produtor({ nome, imagem, distancia, estrelas }){
-    const [selecionado, inverterSelecionado] = useReducer(
-        (selecionado) => !selecionado,
-        false 
+export default function Produtor({ nome, imagem, distancia, estrelas, aoPressionar }) {
+    const distanciaTexto = useMemo(
+        () => distanciaEmMetros(distancia), 
+        [distancia]
     );
 
-    const distanciaTexto = useMemo(() => distanciaEmMetros(distancia), [distancia]);
-
     return <TouchableOpacity 
-                style={estilos.cartao}
-                onPress={inverterSelecionado}
-                >
+            style={estilos.cartao}
+            onPress={aoPressionar}
+        >
         <Image source={imagem} style={estilos.imagem} accessibilityLabel={nome} />
         <View style={estilos.informacoes}>
             <View>
                 <Text style={estilos.nome}>{ nome }</Text>
                 <Estrelas 
                     quantidade={estrelas}
-                    editavel={selecionado}
-                    grande={selecionado}
-                    />
+                />
             </View>
             <Text style={estilos.distancia}>{ distanciaTexto }</Text>
         </View>
@@ -39,25 +36,26 @@ const estilos = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 16,
         borderRadius: 6,
-        flexDirection: 'row',
-        // android
+        flexDirection: "row",
+
+        // Android
         elevation: 4,
 
-        // IOS
+        // iOS
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 2,
         },
         shadowOpacity: 0.23,
-        shadowRadius: 2.62
+        shadowRadius: 2.62,
     },
     imagem: {
-        height: 48,
         width: 48,
+        height: 48,
         borderRadius: 6,
         marginVertical: 16,
-        marginLeft: 16
+        marginLeft: 16,
     },
     informacoes: {
         flex: 1,
@@ -65,7 +63,7 @@ const estilos = StyleSheet.create({
         justifyContent: 'space-between',
         marginLeft: 8,
         marginVertical: 16,
-        marginRight: 16
+        marginRight: 16,
     },
     nome: {
         fontSize: 14,
@@ -74,6 +72,6 @@ const estilos = StyleSheet.create({
     },
     distancia: {
         fontSize: 12,
-        lineHeight: 19
-    }
-})
+        lineHeight: 19,
+    },
+});
