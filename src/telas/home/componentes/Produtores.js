@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
 
 import Produtor from "./Produtor";
@@ -30,4 +30,4 @@ const estilos = StyleSheet.create({
         fontWeight: 'bold',
         color: '#464646'
     }
-})
+}) */

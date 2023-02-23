@@ -1,17 +1,11 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import Home from './src/telas/home/Index';
+import { StatusBar, SafeAreaView } from 'react-native';
+import AppRoutes from './src/routes/AppRoutes';
 
-function App() {
-  return <SafeAreaView style={estilos.tela}>
-      <Home />
-    </SafeAreaView>
-};
+export default function App() {
 
-const estilos = StyleSheet.create({
-  tela: {
-    flex: 1
-  }
-})
-
-export default App;
+  return <SafeAreaView style={{ flex: 1 }}>
+    <StatusBar />
+    <AppRoutes />
+  </SafeAreaView>
+}
