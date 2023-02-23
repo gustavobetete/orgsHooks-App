@@ -30,6 +30,8 @@ export default function Produtores({ melhoresProdutores }) {
         setExibeMensagem(false);
       }, 3000);
     }
+
+    return () => clearTimeout(timeout);
   }, [timestampCompra]);
 
   const TopoLista = () => {
